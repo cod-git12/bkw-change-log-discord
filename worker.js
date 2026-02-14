@@ -27,12 +27,17 @@ export default {
 
       const key = `${title}|${link}|${updateTime}`;
 
+      const NAME = "Bloxd攻略 Wiki v1.5.3"
+      const AVATAR = "https://bloxd.wikiru.jp/image/pukiwiki.png"
+
       // ===== 初回起動：アップデート通知 =====
       if (!state.sentBootMessage) {
         await fetch(webhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            username: NAME,
+            avatar_url: AVATAR,
             content: "🔄 **Bloxd攻略 Wiki Botがアップデートされました**\nwikiの更新通知を再開します"
           })
         });
@@ -46,6 +51,8 @@ export default {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            username: NAME,
+            avatar_url: AVATAR,
             embeds: [
               {
                 title: "Wiki更新通知【埋め込み表示】",
